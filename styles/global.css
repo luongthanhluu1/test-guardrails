@@ -1,0 +1,115 @@
+.h-stack {
+  display: flex !important;
+}
+
+.h-stack-sm > * + * {
+  margin-left: 0.5rem !important;
+}
+
+.h-stack-md > * + * {
+  margin-left: 1rem !important;
+}
+
+.h-stack-lg > * + * {
+  margin-left: 1.5rem !important;
+}
+
+.h-stack-xl > * + * {
+  margin-left: 1.5rem !important;
+}
+
+.v-stack-sm > * + * {
+  margin-top: 0.5rem !important;
+}
+
+.v-stack-md > * + * {
+  margin-top: 1rem !important;
+}
+
+.v-stack-lg > * + * {
+  margin-top: 1.5rem !important;
+}
+
+.v-stack-xl > * + * {
+  margin-top: 1.5rem !important;
+}
+
+.photo-uploader {
+  width: 100%;
+}
+
+.photo-uploader > .ant-upload-select-picture-card {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  border: 1px dashed #bdbdbd;
+}
+
+.subtitle {
+  color: #718096;
+}
+
+.md-content {
+  max-height: 334px;
+  overflow: auto;
+}
+
+.md-content br {
+  content: "A";
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.md-content img {
+  max-width: 100%;
+}
+
+.ant-input-number {
+  width: 100% !important;
+}
+
+#invoice-POS #top,
+#invoice-POS #mid,
+#invoice-POS #bot {
+  /* Targets all id with 'col-' */
+  border-bottom: 1px solid #eee;
+}
+#invoice-POS #top {
+  min-height: 100px;
+}
+#invoice-POS #mid {
+  min-height: 80px;
+}
+#invoice-POS #bot {
+  min-height: 50px;
+}
+#invoice-POS .info {
+  display: block;
+  margin-left: 0;
+}
+#invoice-POS .title {
+  float: right;
+}
+#invoice-POS .title p {
+  text-align: right;
+}
+#invoice-POS table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#invoice-POS .tabletitle {
+  font-size: 0.5em;
+  background: #eee;
+}
+#invoice-POS .service {
+  border-bottom: 1px solid #eee;
+}
+#invoice-POS .item {
+  width: 24mm;
+}
+#invoice-POS .itemtext {
+  font-size: 0.5em;
+}
+#invoice-POS #legalcopy {
+  margin-top: 5mm;
+}

@@ -1,0 +1,51 @@
+.lineClamp {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.infoUser {
+  padding: 10;
+  /* border-bottom: 1px solid #EEE; */
+}
+
+.borderRight {
+  /* border-right: 1px solid #c3c3c3; */
+}
+
+.rowInfo {
+  display: flex;
+  flex-direction: row;
+}
+
+.print {
+  page-break-after: always;
+  font-size: 1.5em;
+  margin: 0 auto;
+  width: 76mm;
+  background: #fff;
+}
+
+.h1 {
+  font-size: 1.2em;
+  margin: 0px;
+  text-align: center;
+}
+#invoice-POS h2 {
+  font-size: 0.9em;
+}
+#invoice-POS h3 {
+  font-size: 1.2em;
+  font-weight: 300;
+  line-height: 2em;
+}
+
+.p {
+  font-size: 0.75em;
+  color: #000;
+  line-height: 1.1em;
+  padding: 0px;
+  font-weight: 700;
+}
