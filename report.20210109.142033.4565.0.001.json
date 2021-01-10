@@ -1,0 +1,729 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20210109.142033.4565.0.001.json",
+    "dumpEventTime": "2021-01-09T14:20:33Z",
+    "dumpEventTimeStamp": "1610173233508",
+    "processId": 4565,
+    "cwd": "/Users/luu.luong-thanh/Documents/projects/eno-admin-dashboard",
+    "commandLine": [
+      "/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node",
+      "/Users/luu.luong-thanh/Documents/projects/eno-admin-dashboard/node_modules/.bin/next",
+      "dev"
+    ],
+    "nodejsVersion": "v12.13.0",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "darwin",
+    "componentVersions": {
+      "node": "12.13.0",
+      "v8": "7.7.299.13-node.12",
+      "uv": "1.32.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.39.2",
+      "napi": "5",
+      "llhttp": "1.1.4",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019a",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.13.0/node-v12.13.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.13.0/node-v12.13.0.tar.gz"
+    },
+    "osName": "Darwin",
+    "osRelease": "19.6.0",
+    "osVersion": "Darwin Kernel Version 19.6.0: Mon Aug 31 22:12:52 PDT 2020; root:xnu-6153.141.2~1/RELEASE_X86_64",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 1417950,
+        "nice": 0,
+        "sys": 1021600,
+        "idle": 10065850,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 29230,
+        "nice": 0,
+        "sys": 24350,
+        "idle": 12451390,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 1275210,
+        "nice": 0,
+        "sys": 845280,
+        "idle": 10384480,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 28210,
+        "nice": 0,
+        "sys": 19030,
+        "idle": 12457730,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 1063140,
+        "nice": 0,
+        "sys": 604930,
+        "idle": 10836900,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 28130,
+        "nice": 0,
+        "sys": 15410,
+        "idle": 12461420,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 814560,
+        "nice": 0,
+        "sys": 413800,
+        "idle": 11276600,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 27770,
+        "nice": 0,
+        "sys": 13000,
+        "idle": 12464200,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 674150,
+        "nice": 0,
+        "sys": 307670,
+        "idle": 11523160,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 27580,
+        "nice": 0,
+        "sys": 11260,
+        "idle": 12466120,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 486050,
+        "nice": 0,
+        "sys": 187860,
+        "idle": 11831060,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 27520,
+        "nice": 0,
+        "sys": 10220,
+        "idle": 12467220,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 382000,
+        "nice": 0,
+        "sys": 140670,
+        "idle": 11982300,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 27410,
+        "nice": 0,
+        "sys": 9540,
+        "idle": 12468010,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 300470,
+        "nice": 0,
+        "sys": 103070,
+        "idle": 12101430,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz",
+        "speed": 2400,
+        "user": 27460,
+        "nice": 0,
+        "sys": 8910,
+        "idle": 12468590,
+        "irq": 0
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "lo0",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "lo0",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "lo0",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::1",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 1
+      },
+      {
+        "name": "en5",
+        "internal": false,
+        "mac": "ac:de:48:00:11:22",
+        "address": "fe80::aede:48ff:fe00:1122",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 4
+      },
+      {
+        "name": "en0",
+        "internal": false,
+        "mac": "3c:22:fb:0b:d6:ed",
+        "address": "fe80::843:f706:4740:cf9d",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 6
+      },
+      {
+        "name": "en0",
+        "internal": false,
+        "mac": "3c:22:fb:0b:d6:ed",
+        "address": "2402:800:63aa:f5a6:1c61:8584:afc0:c612",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "en0",
+        "internal": false,
+        "mac": "3c:22:fb:0b:d6:ed",
+        "address": "2402:800:63aa:f5a6:a97a:a7ea:32e0:f47f",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "en0",
+        "internal": false,
+        "mac": "3c:22:fb:0b:d6:ed",
+        "address": "192.168.1.2",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "awdl0",
+        "internal": false,
+        "mac": "62:fa:64:25:22:b5",
+        "address": "fe80::60fa:64ff:fe25:22b5",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 13
+      },
+      {
+        "name": "llw0",
+        "internal": false,
+        "mac": "62:fa:64:25:22:b5",
+        "address": "fe80::60fa:64ff:fe25:22b5",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 14
+      },
+      {
+        "name": "utun0",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::8a62:3d1c:4795:8345",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 15
+      },
+      {
+        "name": "utun1",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::95f9:ffd2:b36b:5fa0",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 16
+      },
+      {
+        "name": "utun2",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "100.64.0.1",
+        "netmask": "255.255.0.0",
+        "family": "IPv4"
+      }
+    ],
+    "host": "luuluong-thanhs-MacBook-Pro.local"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x000000010014da5c",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, v8::Local<v8::String>) [/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node]"
+    },
+    {
+      "pc": "0x000000010007e8a3",
+      "symbol": "node::OnFatalError(char const*, char const*) [/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node]"
+    },
+    {
+      "pc": "0x0000000100176267",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node]"
+    },
+    {
+      "pc": "0x0000000100176203",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node]"
+    },
+    {
+      "pc": "0x00000001002fa2b5",
+      "symbol": "v8::internal::Heap::FatalProcessOutOfMemory(char const*) [/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node]"
+    },
+    {
+      "pc": "0x00000001002fb984",
+      "symbol": "v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node]"
+    },
+    {
+      "pc": "0x00000001002f8857",
+      "symbol": "v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::GCCallbackFlags) [/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node]"
+    },
+    {
+      "pc": "0x00000001002f683d",
+      "symbol": "v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node]"
+    },
+    {
+      "pc": "0x0000000100301f54",
+      "symbol": "v8::internal::Heap::AllocateRawWithLightRetry(int, v8::internal::AllocationType, v8::internal::AllocationAlignment) [/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node]"
+    },
+    {
+      "pc": "0x0000000100301fcf",
+      "symbol": "v8::internal::Heap::AllocateRawWithRetryOrFail(int, v8::internal::AllocationType, v8::internal::AllocationAlignment) [/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node]"
+    },
+    {
+      "pc": "0x00000001002cebc7",
+      "symbol": "v8::internal::Factory::NewFillerObject(int, bool, v8::internal::AllocationType) [/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node]"
+    },
+    {
+      "pc": "0x00000001005f7725",
+      "symbol": "v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node]"
+    },
+    {
+      "pc": "0x000000010092fbd9",
+      "symbol": "Builtins_CEntry_Return1_DontSaveFPRegs_ArgvOnStack_NoBuiltinExit [/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node]"
+    },
+    {
+      "pc": "0x0000396ee452a169",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2182148096,
+    "totalCommittedMemory": 2181029600,
+    "usedMemory": 2168347640,
+    "availableMemory": 18300080,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 32568,
+        "capacity": 261872,
+        "used": 32296,
+        "available": 229576
+      },
+      "new_space": {
+        "memorySize": 2097152,
+        "committedMemory": 1384976,
+        "capacity": 1047488,
+        "used": 400584,
+        "available": 646904
+      },
+      "old_space": {
+        "memorySize": 671461376,
+        "committedMemory": 671431480,
+        "capacity": 664623680,
+        "used": 664245520,
+        "available": 378160
+      },
+      "code_space": {
+        "memorySize": 3571712,
+        "committedMemory": 3426016,
+        "capacity": 3035104,
+        "used": 2704352,
+        "available": 330752
+      },
+      "map_space": {
+        "memorySize": 8916992,
+        "committedMemory": 8915840,
+        "capacity": 7269680,
+        "used": 7269680,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 1495216128,
+        "committedMemory": 1495216128,
+        "capacity": 1493144552,
+        "used": 1493144552,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 622592,
+        "committedMemory": 622592,
+        "capacity": 550656,
+        "used": 550656,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1047488,
+        "used": 0,
+        "available": 1047488
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 286.063,
+    "kernelCpuSeconds": 14.3431,
+    "cpuConsumptionPercent": 2.42929,
+    "maxRss": 2511947694080,
+    "pageFaults": {
+      "IORequired": 5,
+      "IONotRequired": 2047518
+    },
+    "fsActivity": {
+      "reads": 0,
+      "writes": 0
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "NVM_INC": "/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/include/node",
+    "npm_package_dependencies__reduxjs_toolkit": "^1.5.0",
+    "npm_package_dependencies__material_ui_pickers": "^3.2.10",
+    "npm_config_auth": "bHV1Lmx1b25nLXRoYW5oQG1veGJhbmsuY29tOkFLQ3A1ZlU0YWZGQnJtakx5WkdCRHE4WmszNFExZnFneW54MWNWNXhkM3RXalh3ZVE4OXdHMjZvb3U3VDdmaHhMVjgzSGYxcHE=",
+    "TERM_PROGRAM": "vscode",
+    "NODE": "/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node",
+    "INIT_CWD": "/Users/luu.luong-thanh/Documents/projects/eno-admin-dashboard",
+    "NVM_CD_FLAGS": "-q",
+    "npm_package_devDependencies_typescript": "^4.1.2",
+    "npm_package_devDependencies__types_react_redux": "^7.1.11",
+    "npm_package_dependencies_ky": "^0.17.0",
+    "npm_package_dependencies_axios": "^0.21.1",
+    "npm_config_version_git_tag": "true",
+    "SHELL": "/bin/zsh",
+    "TERM": "xterm-256color",
+    "TMPDIR": "/var/folders/1j/7_h2jjh16bjghv7lyynrn05h0000gr/T/",
+    "npm_config_init_license": "MIT",
+    "npm_config_email": "luu.luong-thanh@moxbank.com",
+    "TERM_PROGRAM_VERSION": "1.52.1",
+    "npm_package_scripts_dev": "next dev",
+    "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
+    "npm_package_dependencies_react_number_format": "^4.4.1",
+    "npm_package_devDependencies__types_react_color": "^3.0.4",
+    "npm_package_private": "true",
+    "npm_config_registry": "https://registry.yarnpkg.com",
+    "ZSH": "/Users/luu.luong-thanh/.oh-my-zsh",
+    "npm_package_dependencies_react_dom": "17.0.1",
+    "npm_config__dragon_registry": "https://dragonproject.jfrog.io/dragonproject/api/npm/npm/",
+    "npm_package_readmeFilename": "README.md",
+    "USER": "luu.luong-thanh",
+    "NVM_DIR": "/Users/luu.luong-thanh/.nvm",
+    "npm_package_description": "First, run the development server:",
+    "npm_package_devDependencies__types_react": "^17.0.0",
+    "COMMAND_MODE": "unix2003",
+    "npm_package_dependencies_ky_universal": "^0.5.0",
+    "npm_package_dependencies_react_icons": "^4.1.0",
+    "npm_config_always_auth": "true",
+    "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.AdbNByq7fX/Listeners",
+    "npm_package_dependencies_zustand": "^3.2.0",
+    "__CF_USER_TEXT_ENCODING": "0x1F8:0x0:0x0",
+    "npm_execpath": "/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/lib/node_modules/yarn/bin/yarn.js",
+    "npm_package_dependencies_react_confirm_alert": "^2.6.2",
+    "PAGER": "less",
+    "npm_package_dependencies_react_redux": "^7.2.2",
+    "npm_package_devDependencies_babel_plugin_import": "^1.13.3",
+    "npm_package_dependencies_react_use": "^15.3.4",
+    "LSCOLORS": "Gxfxcxdxbxegedabagacad",
+    "PATH": "/var/folders/1j/7_h2jjh16bjghv7lyynrn05h0000gr/T/yarn--1610160866919-0.7006151781151593:/Users/luu.luong-thanh/Documents/projects/eno-admin-dashboard/node_modules/.bin:/Users/luu.luong-thanh/.config/yarn/link/node_modules/.bin:/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node_modules/npm/bin/node-gyp-bin:/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin:/usr/local/opt/libpq/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"dev\"],\"original\":[\"dev\"]}",
+    "npm_package_dependencies_immer": "^8.0.0",
+    "npm_package_dependencies__material_ui_core": "^4.11.2",
+    "LaunchInstanceID": "85C77F61-9E9E-448C-A07F-2E90FB1D993E",
+    "_": "/Users/luu.luong-thanh/Documents/projects/eno-admin-dashboard/node_modules/.bin/next",
+    "npm_package_dependencies_react_toastify": "^6.1.0",
+    "npm_package_dependencies__material_ui_lab": "^4.0.0-alpha.57",
+    "PWD": "/Users/luu.luong-thanh/Documents/projects/eno-admin-dashboard",
+    "npm_package_dependencies_next_translate": "^1.0.0",
+    "npm_lifecycle_event": "dev",
+    "LANG": "en_US.UTF-8",
+    "npm_package_name": "eno-admin-dashboard",
+    "npm_package_dependencies__material_ui_data_grid": "^4.0.0-alpha.13",
+    "npm_package_dependencies__date_io_moment": "1.x",
+    "npm_package_scripts_start": "next start",
+    "npm_package_scripts_build": "next build",
+    "npm_config_version_commit_hooks": "true",
+    "XPC_FLAGS": "0x0",
+    "npm_package_dependencies__react_keycloak_nextjs": "^2.0.0-beta.10",
+    "npm_config_bin_links": "true",
+    "npm_package_dependencies_next": "10.0.3",
+    "XPC_SERVICE_NAME": "0",
+    "npm_package_version": "0.1.0",
+    "HOME": "/Users/luu.luong-thanh",
+    "SHLVL": "2",
+    "VSCODE_GIT_ASKPASS_MAIN": "/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass-main.js",
+    "npm_package_dependencies_react_barcode": "^1.4.0",
+    "npm_config_save_prefix": "^",
+    "npm_config_strict_ssl": "true",
+    "npm_config_version_git_message": "v%s",
+    "npm_package_dependencies_react_color": "^2.19.3",
+    "LOGNAME": "luu.luong-thanh",
+    "LESS": "-R",
+    "YARN_WRAP_OUTPUT": "false",
+    "npm_lifecycle_script": "next dev",
+    "VSCODE_GIT_IPC_HANDLE": "/var/folders/1j/7_h2jjh16bjghv7lyynrn05h0000gr/T/vscode-git-0808231ab9.sock",
+    "npm_package_dependencies_react": "17.0.1",
+    "NVM_BIN": "/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin",
+    "npm_package_dependencies_js_file_download": "^0.4.12",
+    "npm_config_version_git_sign": "",
+    "npm_config_ignore_scripts": "",
+    "npm_config_user_agent": "yarn/1.22.4 npm/? node/v12.13.0 darwin x64",
+    "GIT_ASKPASS": "/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass.sh",
+    "VSCODE_GIT_ASKPASS_NODE": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Renderer).app/Contents/MacOS/Code Helper (Renderer)",
+    "npm_package_devDependencies__types_node": "^14.14.10",
+    "npm_package_dependencies_react_to_print": "^2.12.0",
+    "npm_package_dependencies_antd": "^4.9.1",
+    "npm_config_init_version": "1.0.0",
+    "npm_config_ignore_optional": "",
+    "SECURITYSESSIONID": "186a7",
+    "NODE_EXTRA_CA_CERTS": "/Users/luu.luong-thanh/Zscaler_Root_CA.pem",
+    "COLORTERM": "truecolor",
+    "npm_node_execpath": "/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node",
+    "npm_package_dependencies__material_ui_icons": "^4.11.2",
+    "npm_config_version_tag_prefix": "v",
+    "NODE_ENV": "development"
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": 0,
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 65535,
+      "hard": 65535
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": 67104768
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": 5568,
+      "hard": 8352
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "/Users/luu.luong-thanh/.nvm/versions/node/v12.13.0/bin/node",
+    "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+    "/usr/lib/libSystem.B.dylib",
+    "/usr/lib/libc++.1.dylib",
+    "/usr/lib/libobjc.A.dylib",
+    "/usr/lib/libfakelink.dylib",
+    "/usr/lib/libDiagnosticMessagesClient.dylib",
+    "/usr/lib/libicucore.A.dylib",
+    "/usr/lib/libz.1.dylib",
+    "/usr/lib/libc++abi.dylib",
+    "/usr/lib/system/libcache.dylib",
+    "/usr/lib/system/libcommonCrypto.dylib",
+    "/usr/lib/system/libcompiler_rt.dylib",
+    "/usr/lib/system/libcopyfile.dylib",
+    "/usr/lib/system/libcorecrypto.dylib",
+    "/usr/lib/system/libdispatch.dylib",
+    "/usr/lib/system/libdyld.dylib",
+    "/usr/lib/system/libkeymgr.dylib",
+    "/usr/lib/system/liblaunch.dylib",
+    "/usr/lib/system/libmacho.dylib",
+    "/usr/lib/system/libquarantine.dylib",
+    "/usr/lib/system/libremovefile.dylib",
+    "/usr/lib/system/libsystem_asl.dylib",
+    "/usr/lib/system/libsystem_blocks.dylib",
+    "/usr/lib/system/libsystem_c.dylib",
+    "/usr/lib/system/libsystem_configuration.dylib",
+    "/usr/lib/system/libsystem_coreservices.dylib",
+    "/usr/lib/system/libsystem_darwin.dylib",
+    "/usr/lib/system/libsystem_dnssd.dylib",
+    "/usr/lib/system/libsystem_featureflags.dylib",
+    "/usr/lib/system/libsystem_info.dylib",
+    "/usr/lib/system/libsystem_m.dylib",
+    "/usr/lib/system/libsystem_malloc.dylib",
+    "/usr/lib/system/libsystem_networkextension.dylib",
+    "/usr/lib/system/libsystem_notify.dylib",
+    "/usr/lib/system/libsystem_sandbox.dylib",
+    "/usr/lib/system/libsystem_secinit.dylib",
+    "/usr/lib/system/libsystem_kernel.dylib",
+    "/usr/lib/system/libsystem_platform.dylib",
+    "/usr/lib/system/libsystem_pthread.dylib",
+    "/usr/lib/system/libsystem_symptoms.dylib",
+    "/usr/lib/system/libsystem_trace.dylib",
+    "/usr/lib/system/libunwind.dylib",
+    "/usr/lib/system/libxpc.dylib",
+    "/Users/luu.luong-thanh/Documents/projects/eno-admin-dashboard/node_modules/fsevents/fsevents.node",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices",
+    "/System/Library/Frameworks/CFNetwork.framework/Versions/A/CFNetwork",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/FSEvents",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/CarbonCore",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Metadata",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/OSServices.framework/Versions/A/OSServices",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/SearchKit.framework/Versions/A/SearchKit",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/AE.framework/Versions/A/AE",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/LaunchServices",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/DictionaryServices.framework/Versions/A/DictionaryServices",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/SharedFileList.framework/Versions/A/SharedFileList",
+    "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+    "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+    "/System/Library/Frameworks/SystemConfiguration.framework/Versions/A/SystemConfiguration",
+    "/System/Library/Frameworks/Security.framework/Versions/A/Security",
+    "/usr/lib/libsqlite3.dylib",
+    "/usr/lib/libxml2.2.dylib",
+    "/usr/lib/libnetwork.dylib",
+    "/usr/lib/libapple_nghttp2.dylib",
+    "/usr/lib/libauto.dylib",
+    "/usr/lib/libcompression.dylib",
+    "/System/Library/Frameworks/DiskArbitration.framework/Versions/A/DiskArbitration",
+    "/usr/lib/libarchive.2.dylib",
+    "/usr/lib/liblangid.dylib",
+    "/usr/lib/libCRFSuite.dylib",
+    "/usr/lib/liblzma.5.dylib",
+    "/usr/lib/libenergytrace.dylib",
+    "/usr/lib/libbsm.0.dylib",
+    "/usr/lib/system/libkxld.dylib",
+    "/System/Library/PrivateFrameworks/AppleFSCompression.framework/Versions/A/AppleFSCompression",
+    "/usr/lib/libcoretls.dylib",
+    "/usr/lib/libcoretls_cfhelpers.dylib",
+    "/usr/lib/libpam.2.dylib",
+    "/usr/lib/libxar.1.dylib",
+    "/usr/lib/libbz2.1.0.dylib",
+    "/usr/lib/libiconv.2.dylib",
+    "/usr/lib/libcharset.1.dylib",
+    "/usr/lib/libpcap.A.dylib",
+    "/System/Library/Frameworks/NetFS.framework/Versions/A/NetFS",
+    "/System/Library/PrivateFrameworks/NetAuth.framework/Versions/A/NetAuth",
+    "/System/Library/PrivateFrameworks/login.framework/Versions/A/Frameworks/loginsupport.framework/Versions/A/loginsupport",
+    "/System/Library/PrivateFrameworks/TCC.framework/Versions/A/TCC",
+    "/System/Library/PrivateFrameworks/CoreNLP.framework/Versions/A/CoreNLP",
+    "/System/Library/PrivateFrameworks/MetadataUtilities.framework/Versions/A/MetadataUtilities",
+    "/usr/lib/libmecabra.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate",
+    "/usr/lib/libmecab.dylib",
+    "/usr/lib/libgermantok.dylib",
+    "/usr/lib/libThaiTokenizer.dylib",
+    "/usr/lib/libChineseTokenizer.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vImage.framework/Versions/A/vImage",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/vecLib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libvMisc.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libvDSP.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libLAPACK.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libLinearAlgebra.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libSparseBLAS.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libQuadrature.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBNNS.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libSparse.dylib",
+    "/System/Library/PrivateFrameworks/LanguageModeling.framework/Versions/A/LanguageModeling",
+    "/System/Library/PrivateFrameworks/CoreEmoji.framework/Versions/A/CoreEmoji",
+    "/System/Library/PrivateFrameworks/LinguisticData.framework/Versions/A/LinguisticData",
+    "/System/Library/PrivateFrameworks/Lexicon.framework/Versions/A/Lexicon",
+    "/usr/lib/libcmph.dylib",
+    "/System/Library/Frameworks/OpenDirectory.framework/Versions/A/Frameworks/CFOpenDirectory.framework/Versions/A/CFOpenDirectory",
+    "/System/Library/Frameworks/OpenDirectory.framework/Versions/A/OpenDirectory",
+    "/System/Library/PrivateFrameworks/APFS.framework/Versions/A/APFS",
+    "/System/Library/Frameworks/SecurityFoundation.framework/Versions/A/SecurityFoundation",
+    "/usr/lib/libutil.dylib",
+    "/System/Library/PrivateFrameworks/CoreServicesStore.framework/Versions/A/CoreServicesStore",
+    "/System/Library/Frameworks/ServiceManagement.framework/Versions/A/ServiceManagement",
+    "/System/Library/PrivateFrameworks/BackgroundTaskManagement.framework/Versions/A/BackgroundTaskManagement",
+    "/usr/lib/libxslt.1.dylib",
+    "/usr/lib/libusrtcp.dylib"
+  ]
+}

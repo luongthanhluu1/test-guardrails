@@ -1,3 +1,5 @@
+import { Tag } from "./Tag";
+
 interface PriceItem {
   label: string;
   qty: number;
@@ -15,19 +17,17 @@ interface ProductInfo {
   photos: string[];
 }
 export interface Product {
-  id: string;
+  id?: string;
+  _id?: string;
   name?: string;
   photo?: string;
   category?: string;
   origin?: string;
-  market_price?: number;
-  price: number;
-  price_list?: PriceList;
-  out_of_stock?: boolean;
-  sold_out?: boolean;
-  is_deleted?: boolean;
+  inputPrice: number | string;
+  price?: number | string;
   unit?: string;
   info?: ProductInfo;
+  tags?: Tag[];
 }
 
 export interface ProfitProduct {}

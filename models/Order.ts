@@ -1,6 +1,9 @@
 import { Cart } from "./Cart";
+import { Contact } from "./Contact";
+import { Location } from "./Location";
 import { Partner } from "./Partner";
-import { Voucher } from "./Voucher";
+import { Product } from "./Product";
+import { Tag } from "./Tag";
 
 export interface Shipment {
   name: string;
@@ -8,82 +11,65 @@ export interface Shipment {
   phone: string;
 }
 
-export interface Order {
-  cart?: Cart;
-  created_at?: string;
-  customer_id?: string;
-  customer_name?: string;
-  customer_photo?: string;
-  discount_value?: number;
-  id?: string;
-  is_demo_account?: boolean;
-  note?: string;
-  order_created_at?: string;
-  partners?: Partner[];
-  partner_address?: string;
-  partner_id?: string;
-  partner_name?: string;
-  partner_phone?: string;
-  partner_photo?: string;
-  ship_fee?: number;
-  shipment?: Shipment;
-  status?: string;
-  updated_at?: string;
-  voucher?: Voucher;
-}
-
-export const StatusOrderList = [
-  "",
-  "Đã Tiếp Nhận",
-  "Lưu Kho Ava",
-  "Chờ Giao Đối Tác",
-  "Đang Giao Đối Tác",
-  "Đã Giao Đối Tác",
-  "Đã Thu Tiền Đối Tác",
-  "Lưu Kho Đối Tác",
-  "Đã Giao Khách",
-  "Hoàn Tất",
-  "Trả Hàng",
-  "Có Sự Cố",
-];
-export interface StatusMapColorInterface {
-  waiting: string;
-  processing: string;
-  completed: string;
-  canceled: string;
-}
-export const StatusMapColor: StatusMapColorInterface = {
-  waiting: "purple",
-  processing: "blue",
-  completed: "green",
-  canceled: "red",
-};
-
-export enum StatusSkuColor {
-  "Đã Tiếp Nhận" = "purple",
-  "Lưu Kho Ava" = "blue",
-  "Chờ Giao Đối Tác" = "blue",
-  "Đang Giao Đối Tác" = "blue",
-  "Đã Giao Đối Tác" = "green",
-  "Đã Thu Tiền Đối Tác" = "black",
-  "Lưu Kho Đối Tác" = "black",
-  "Đã Giao Khách" = "black",
-  "Hoàn Tất" = "green",
-  "Trả Hàng" = "red",
-  "Có Sự Cố" = "red",
+export enum Type {
+  Input = "input",
+  Output = "output",
+  Produce = "produce",
+  Move = "move",
 }
 
 export enum Status {
-  EMPTY = "",
-  RECEIVED = "Đã Tiếp Nhận",
-  SAVED_OUR_STORAGE = "Lưu Kho Ava",
-  WAITING_SHIP_PARTNER = "Chờ Giao Đối Tác",
-  SHIPPING_PARTNER = "Đang Giao Đối Tác",
-  GAVE_PARTNER = "Đã Giao Đối Tác",
-  RECEIVED_MONEY_PARTNER = "Đã Thu Tiền Đối Tác",
-  SAVED_PARTNER_STORAGE = "Lưu Kho Đối Tác",
-  GAVE_CUSTOMER = "Đã Giao Khách",
-  COMPLETED = "Hoàn Tất",
-  RETURN = "Trả Hàng",
-  PRODLEM = "Có Sự Cố",
+  Waiting = "waiting",
+  Approved = "approved",
+  Unpaid = "unpaid",
+  Completed = "completed",
+  Canceled = "canceled",
+  Deleted = "deleted",
 }
+
+export interface OrderItem {
+  _id?: string;
+  id?: string;
+  tags?: Tag[];
+  quantily: number;
+  price?: string | number;
+  inputPrice?: string | number;
+  totalPrice?: string | number;
+  name?: string;
+}
+
+export interface Order {
+  id?: string;
+  _id?: string;
+  type: Type;
+  costs?: number;
+  curency?: string;
+  customer?: Contact;
+  createdAt?: string;
+  deliver?: Contact;
+  date?: string;
+  items?: OrderItem[];
+  requireItems?: OrderItem[];
+  note?: string;
+  locationFrom?: Location;
+  locationTo?: Location;
+  inputDate?: string;
+  isWarehouse?: boolean;
+  promoteCode?: string;
+  promo?: number;
+  price?: number;
+  profit?: number;
+  totalPrice?: number;
+  outputDate?: string;
+  status?: Status;
+  waste?: number;
+}
+
+export const TypeOptions = [Type.Input, Type.Output, Type.Produce, Type.Move];
+export const StatusOptions = [
+  Status.Waiting,
+  Status.Approved,
+  Status.Unpaid,
+  Status.Completed,
+  Status.Canceled,
+];

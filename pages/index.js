@@ -1,2 +1,2 @@
-import customer_order from './customer-orders';
-export default customer_order;
+import Dashboard from './dashboard';
+export default Dashboard;

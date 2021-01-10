@@ -1,50 +1,45 @@
+import React, { useState } from "react";
 import { useEffectOnce } from "react-use";
+import { Container } from "@material-ui/core";
 
 import Head from "next/head";
 import { Layout } from "antd";
 import { Sider } from "components/Sider";
 import { SignIn } from "components/SignIn";
+import { Header } from "components/Header";
+import { AuthContext } from "context/auth";
+
+import { useStyles } from "./styles";
 
 interface CustomLayoutProps {
   children: React.ReactElement;
 }
 export const CustomLayout: React.FC<CustomLayoutProps> = ({ children }) => {
-  useEffectOnce(() => {
-    // document.addEventListener('visibilitychange', function() {
-    //   let state = document.visibilityState;
-    //   if (state === 'hidden') {
-    //     localStorage.setItem('hidden-since', Date.now());
-    //   } else {
-    //     let elapsed =
-    //       Date.now() -
-    //       Number(localStorage.getItem('hidden-since') ?? Date.now());
-    //     if (elapsed > 60e3) {
-    //       location.reload();
-    //     }
-    //   }
-    // });
-  });
+  const classes = useStyles();
+  const [authTokens, setAuthTokens] = useState("");
 
+  const setTokens = (data: any) => {
+    localStorage.setItem("tokens", JSON.stringify(data));
+    setAuthTokens(data);
+  };
+  console.log(123);
   return (
-    <div>
+    <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <title>AvaDeli</title>
+        <title>Dashboard</title>
       </Head>
 
-      <Layout>
-        <SignIn>
-          <Sider />
-          <Layout style={{ minHeight: "calc(100vh - 64px)" }}>
-            {/* <TheHeader /> */}
-
-            <Layout.Content style={{ padding: "2rem" }}>
-              {children}
-            </Layout.Content>
-          </Layout>
-        </SignIn>
-      </Layout>
-    </div>
+      <SignIn>
+        <>
+          <Header />
+          <div className={classes.container}>
+            <Sider />
+            <div className={classes.content}>{children}</div>
+          </div>
+        </>
+      </SignIn>
+    </AuthContext.Provider>
   );
 };

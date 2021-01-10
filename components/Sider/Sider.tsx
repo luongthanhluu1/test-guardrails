@@ -1,122 +1,88 @@
 import Link from "next/link";
 import { Layout, Menu } from "antd";
+import useTranslation from "next-translate/useTranslation";
 
-export const Sider = () => (
-  <Layout.Sider collapsible>
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        marginBottom: 16,
-      }}
-    >
-      <img
-        src="/logoMio.png"
-        alt="iTAPHOA logo"
-        style={{ height: 82, width: 82 }}
-      />
-    </div>
+import { ROUTER } from "consts/router";
+import { RootState } from "stores";
+import { useSelector } from "react-redux";
+import { Role } from "models/User";
 
-    <Menu theme="dark">
-      <Menu.Item key="customer-orders">
-        <Link href="/customer-orders">
-          <a>Customer Orders</a>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="waiting-orders">
-        <Link href="/waiting-orders">
-          <a>Waiting Orders</a>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="suppliers">
-        <Link href="/suppliers">
-          <a>Suppliers</a>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="inventory">
-        <Link href="/inventory">
-          <a>Inventory</a>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="2">
-        <Link href="/products">
-          <a>Products</a>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="20">
-        <Link href="/hot-products">
-          <a>Hot product</a>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="4">
-        <Link href="/partners">
-          <a>Partners</a>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="5">
-        <Link href="/chats">
-          <a>Chats</a>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="6">
-        <Link href="/vouchers">
-          <a>Vouchers</a>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="7">
-        <Link href="/posts">
-          <a>Posts</a>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="Stations">
-        <Link href="/stations">
-          <a>Stations</a>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="Category">
-        <Link href="/category">
-          <a>Category</a>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="edit-product">
-        <Link href="/edit-products">
-          <a>Edit Product</a>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="flash-sale">
-        <Link href="/flash-sale">
-          <a>Flash Sale</a>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="voucher-partner">
-        <Link href="/voucher-partner">
-          <a>Voucher partner</a>
-        </Link>
-      </Menu.Item>
+export const Sider = () => {
+  const { t } = useTranslation("common");
+  const user = useSelector((state: RootState) => state.user);
+  return (
+    <Layout.Sider collapsible>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginBottom: 16,
+        }}
+      >
+        <img
+          src="/logoMio.png"
+          alt="iTAPHOA logo"
+          style={{ height: 82, width: 82 }}
+        />
+      </div>
 
-      <Menu.Item key="review">
-        <Link href="/review">
-          <a>Reviews</a>
-        </Link>
-      </Menu.Item>
-
-      <Menu.Item key="progress-bar">
-        <Link href="/progress-bar">
-          <a>Progress</a>
-        </Link>
-      </Menu.Item>
-
-      <Menu.Item key="config">
-        <Link href="/config">
-          <a>Config</a>
-        </Link>
-      </Menu.Item>
-      {/* <Menu.Item key='1'>
-        <Link href='/customer-order'>
-          <a>Reports (In-progress)</a>
-        </Link>
-      </Menu.Item> */}
-    </Menu>
-  </Layout.Sider>
-);
+      <Menu theme="dark">
+        {user?.role === Role.ADMIN && (
+          <>
+            <Menu.Item key="dashboard">
+              <Link href={ROUTER.dashboard}>
+                <a>{t("dashboard")}</a>
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="debt">
+              <Link href="/debt">
+                <a>{t("debt")}</a>
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="user">
+              <Link href="/user">
+                <a>{t("user")}</a>
+              </Link>
+            </Menu.Item>
+          </>
+        )}
+        <Menu.Item key="item">
+          <Link href={ROUTER.item}>
+            <a>{t("item")}</a>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="tag">
+          <Link href="/tag">
+            <a>{t("tag")}</a>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="location">
+          <Link href={ROUTER.location}>
+            <a>{t("location")}</a>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="contact">
+          <Link href={ROUTER.contact}>
+            <a>{t("contact")}</a>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="order">
+          <Link href={ROUTER.order}>
+            <a>{t("order")}</a>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="workflow">
+          <Link href="/workflow">
+            <a>{t("workflow")}</a>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="warehouse">
+          <Link href="/warehouse">
+            <a>{t("warehouse manager")}</a>
+          </Link>
+        </Menu.Item>
+      </Menu>
+    </Layout.Sider>
+  );
+};

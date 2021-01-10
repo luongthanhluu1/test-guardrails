@@ -1,0 +1,8 @@
+{
+  "locales": ["vn"],
+  "defaultLocale": "vn",
+  "pages": {
+    "*": ["common"],
+    "/dashboard": ["dashboard"]
+  }
+}
