@@ -26,10 +26,7 @@ jobs:
       - run: npm install
 
       # build
-      - run: npm run build:dev
-
-      # gen swagger
-      - run: npm run swagger-autogen:dev
+      - run: npm run build
 
       # Add the server to known hosts
       - run: ssh-keyscan -H 159.65.143.86 >> ~/.ssh/known_hosts
