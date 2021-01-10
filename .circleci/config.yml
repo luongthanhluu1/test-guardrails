@@ -44,4 +44,4 @@ workflows:
       - deploy-dev:
           filters:
             branches:
-              only: master
+              only: develop
