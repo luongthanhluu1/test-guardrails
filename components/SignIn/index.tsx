@@ -122,7 +122,6 @@ interface SignInProps {
 export const SignIn = ({ children }: SignInProps) => {
   let dispatch = useDispatch();
   let user = useSelector((state: RootState) => state.user);
-  // console.log(1234, user);
   let [isLoading, toggleLoading] = useToggle(true);
 
   useEffectOnce(() => {

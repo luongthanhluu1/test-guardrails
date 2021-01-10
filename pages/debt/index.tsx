@@ -146,12 +146,10 @@ const Warehouse = () => {
     setPage(page);
   };
   const onSortChange = (sortItem: SortItem) => {
-    console.log("onchange");
     setSort(sortItem);
   };
 
   useEffect(() => {
-    console.log(listContacts);
     if (orders?.length && listContacts && listLocations) {
       const newData: { [id: string]: ListData } = {};
       orders?.forEach((order) => {
@@ -191,10 +189,8 @@ const Warehouse = () => {
       //map object to array data
       const arrayData: ListData[] = [];
       for (const [key, value] of Object.entries(newData)) {
-        console.log(`${key}: ${value}`);
         arrayData.push(value);
       }
-      console.log(arrayData);
       setData(arrayData);
       setTotal(arrayData.length);
     }

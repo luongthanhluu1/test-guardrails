@@ -179,7 +179,6 @@ export const getProfitProducts = () => {
 };
 
 export const updateProfitProduct = product => {
-  console.log('product', product);
   return api.post(`admin/product_profit`, { json: product }).json();
 };
 

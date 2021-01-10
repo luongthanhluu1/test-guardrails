@@ -241,7 +241,6 @@ const Form = ({ data, onSave, submiting }: ProductPormProps) => {
           item.quantily * parseInt(`${item.inputPrice || item.price}`, 10);
       }
       if (type === Type.Produce) {
-        console.log(workflows[item?._id || ""]);
         itemTotal = item.quantily * (workflows[item?._id || ""]?.costs || 0);
       }
       item.totalPrice = itemTotal;
@@ -257,7 +256,6 @@ const Form = ({ data, onSave, submiting }: ProductPormProps) => {
       if (promo) {
         tmpProfit -= parseInt(`${promo}`, 10);
       }
-      // console.log(parseInt(`${costs}`, 10), tmpTotal);
     }
     // if (type === Type.Output) {
     //   if (costs) {
@@ -267,7 +265,6 @@ const Form = ({ data, onSave, submiting }: ProductPormProps) => {
     if (promo) {
       tmpTotal -= parseInt(`${promo}`, 10);
     }
-    // console.log(orderItems);
     setTotal(tmpTotal);
     setProfit(tmpProfit);
   };

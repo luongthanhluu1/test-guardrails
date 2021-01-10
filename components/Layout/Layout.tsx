@@ -22,7 +22,6 @@ export const CustomLayout: React.FC<CustomLayoutProps> = ({ children }) => {
     localStorage.setItem("tokens", JSON.stringify(data));
     setAuthTokens(data);
   };
-  console.log(123);
   return (
     <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
       <Head>

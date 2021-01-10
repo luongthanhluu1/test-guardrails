@@ -57,7 +57,6 @@ export const useTable = ({
   };
 
   const onSortModelChange = (params: SortModelParams) => {
-    console.log(params);
     if (params && params.sortModel && params.sortModel[0]) {
       onSortChange ? onSortChange(params.sortModel[0]) : null;
     }
