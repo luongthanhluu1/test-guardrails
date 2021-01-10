@@ -3,7 +3,7 @@ jobs:
   deploy-dev:
     docker:
       # specify the version you desire here (you might not want node)
-      - image: circleci/node:12.13
+      - image: circleci/node:14.12
     steps:
       - type: shell
         shell: /bin/sh
