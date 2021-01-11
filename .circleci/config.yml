@@ -29,10 +29,10 @@ jobs:
       - run: npm run build
 
       # Add the server to known hosts
-      - run: ssh-keyscan -H 159.65.143.86 >> ~/.ssh/known_hosts
+      - run: ssh-keyscan -H 134.209.97.209 >> ~/.ssh/known_hosts
 
       # Finally, upload your files to server.
-      - run: rsync -avce ssh --delete ./ circleci@159.65.143.86:/var/www/eno-admin-dashboard
+      - run: rsync -avce ssh --delete ./ circleci@134.209.97.209:/var/www/eno-admin-dashboard
 
 workflows:
   version: 2
