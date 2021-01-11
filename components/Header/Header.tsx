@@ -12,8 +12,10 @@ import { RootState } from "stores";
 import { actions } from "stores/user";
 
 import { useStyles } from "./styles";
-
-export const Header = () => {
+interface HeaderProps {
+  onClickMenuIcon: () => void;
+}
+export const Header: React.FC<HeaderProps> = ({ onClickMenuIcon }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const user = useSelector((state: RootState) => state.user);
@@ -22,18 +24,20 @@ export const Header = () => {
     //   handleLogin(password);
     dispatch(actions.setUser({}));
   };
+
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar>
-        {/* <IconButton
+        <IconButton
           edge="start"
           //   className={classes.menuButton}
           color="inherit"
           aria-label="menu"
+          onClick={onClickMenuIcon}
         >
           <Menu />
         </IconButton>
-        <Typography variant="h6">News</Typography> */}
+        {/* <Typography variant="h6">News</Typography> */}
         <Button color="inherit">{user?.username}</Button>
         <Button color="inherit" onClick={logout}>
           Logout

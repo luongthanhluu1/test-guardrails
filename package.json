@@ -16,7 +16,6 @@
     "@material-ui/pickers": "^3.2.10",
     "@react-keycloak/nextjs": "^2.0.0-beta.10",
     "@reduxjs/toolkit": "^1.5.0",
-    "antd": "^4.9.1",
     "axios": "^0.21.1",
     "immer": "^8.0.0",
     "js-file-download": "^0.4.12",
