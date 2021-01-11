@@ -2,7 +2,7 @@ import { SortItem } from "@material-ui/data-grid";
 import axios from "axios";
 import { Product, Status, Tag } from "models";
 
-const apiUrl = "http://localhost:3001/v1/";
+const apiUrl = "http://134.209.97.209:3001/v1/";
 
 interface ParamsList {
   page?: number;

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Tag } from "models";
 
-const apiUrl = "http://localhost:3001/v1/workflows";
+const apiUrl = "http://134.209.97.209:3001/v1/workflows";
 
 export const create = (data: Tag) => {
   return axios.post(apiUrl, data);
