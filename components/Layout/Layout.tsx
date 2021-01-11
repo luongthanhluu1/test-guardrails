@@ -110,7 +110,7 @@ export const CustomLayout: React.FC<CustomLayoutProps> = ({ children }) => {
                   "workflow",
                   "warehouse",
                 ].map((text, index) => (
-                  <ListItem button key={text}>
+                  <ListItem button key={text} onClick={() => goTo(text)}>
                     <ListItemIcon>
                       {index % 2 === 0 ? <Inbox /> : <Mail />}
                     </ListItemIcon>
