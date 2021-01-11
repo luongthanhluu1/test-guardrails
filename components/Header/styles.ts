@@ -4,4 +4,8 @@ export const useStyles = makeStyles(() => ({
   container: {
     // padding: "15px 0px",
   },
+  title: {
+    flexGrow: 1,
+    textAlign: "center",
+  },
 }));
