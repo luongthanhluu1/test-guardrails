@@ -3,7 +3,6 @@ import { useEffectOnce } from "react-use";
 import { Container } from "@material-ui/core";
 
 import Head from "next/head";
-import { Layout } from "antd";
 import { Sider } from "components/Sider";
 import { SignIn } from "components/SignIn";
 import { Header } from "components/Header";
