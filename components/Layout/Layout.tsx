@@ -75,88 +75,84 @@ export const CustomLayout: React.FC<CustomLayoutProps> = ({ children }) => {
       </Head>
 
       <SignIn>
-        <>
+        <div className={classes.root}>
           <Header
             onClickMenuIcon={onClickMenuIcon}
             className={clsx(classes.appBar, {
               [classes.appBarShift]: drawerOpen,
             })}
           />
-          <div className={classes.container}>
-            <Drawer
-              variant="permanent"
-              className={clsx(classes.drawer, {
+          <Drawer
+            variant="permanent"
+            className={clsx(classes.drawer, {
+              [classes.drawerOpen]: drawerOpen,
+              [classes.drawerClose]: !drawerOpen,
+            })}
+            classes={{
+              paper: clsx({
                 [classes.drawerOpen]: drawerOpen,
                 [classes.drawerClose]: !drawerOpen,
-              })}
-              classes={{
-                paper: clsx({
-                  [classes.drawerOpen]: drawerOpen,
-                  [classes.drawerClose]: !drawerOpen,
-                }),
-              }}
-            >
-              <div className={classes.drawerHeader}>
-                <IconButton onClick={handleDrawerClose}>
-                  {theme.direction === "ltr" ? (
-                    <ChevronLeft />
-                  ) : (
-                    <ChevronRight />
-                  )}
-                </IconButton>
-              </div>
-              <Divider />
-              {user?.role === Role.ADMIN && (
-                <>
-                  <List>
-                    {[
-                      { name: "dashboard", icon: <Dashboard /> },
-                      { name: "debt", icon: <AttachMoney /> },
-                      { name: "user", icon: <Group /> },
-                    ].map((item, index) => (
-                      <ListItem
-                        button
-                        key={item.name}
-                        onClick={() => goTo(item.name)}
-                      >
-                        <ListItemIcon>{item.icon}</ListItemIcon>
-                        <ListItemText primary={t(item.name)} />
-                      </ListItem>
-                    ))}
-                  </List>
-                  <Divider />
-                </>
-              )}
-              <List>
-                {[
-                  { name: "item", icon: <Dashboard /> },
-                  { name: "tag", icon: <Label /> },
-                  { name: "location", icon: <LocationOn /> },
-                  { name: "contact", icon: <ContactPhone /> },
-                  { name: "order", icon: <ListAlt /> },
-                  { name: "workflow", icon: <AccountTree /> },
-                  { name: "warehouse", icon: <HomeWork /> },
-                ].map((item, index) => (
-                  <ListItem
-                    button
-                    key={item.name}
-                    onClick={() => goTo(item.name)}
-                  >
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText primary={t(item.name)} />
-                  </ListItem>
-                ))}
-              </List>
-            </Drawer>
+              }),
+            }}
+          >
+            <div className={classes.drawerHeader}>
+              <IconButton onClick={handleDrawerClose}>
+                {theme.direction === "ltr" ? <ChevronLeft /> : <ChevronRight />}
+              </IconButton>
+            </div>
+            <Divider />
+            {user?.role === Role.ADMIN && (
+              <>
+                <List>
+                  {[
+                    { name: "dashboard", icon: <Dashboard /> },
+                    { name: "debt", icon: <AttachMoney /> },
+                    { name: "user", icon: <Group /> },
+                  ].map((item, index) => (
+                    <ListItem
+                      button
+                      key={item.name}
+                      onClick={() => goTo(item.name)}
+                    >
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText primary={t(item.name)} />
+                    </ListItem>
+                  ))}
+                </List>
+                <Divider />
+              </>
+            )}
+            <List>
+              {[
+                { name: "item", icon: <Dashboard /> },
+                { name: "tag", icon: <Label /> },
+                { name: "location", icon: <LocationOn /> },
+                { name: "contact", icon: <ContactPhone /> },
+                { name: "order", icon: <ListAlt /> },
+                { name: "workflow", icon: <AccountTree /> },
+                { name: "warehouse", icon: <HomeWork /> },
+              ].map((item, index) => (
+                <ListItem
+                  button
+                  key={item.name}
+                  onClick={() => goTo(item.name)}
+                >
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText primary={t(item.name)} />
+                </ListItem>
+              ))}
+            </List>
+          </Drawer>
+          <div className={classes.container}>
             <div
-              className={clsx(classes.content, {
-                [classes.contentShift]: drawerOpen,
-              })}
+            // className={clsx(classes.content, {
+            //   [classes.contentShift]: drawerOpen,
+            // })}
             >
               {children}
             </div>
           </div>
-        </>
+        </div>
       </SignIn>
     </AuthContext.Provider>
   );

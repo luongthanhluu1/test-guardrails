@@ -6,12 +6,6 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
   },
-  // content: {
-  //   minHeight: "calc(100vh - 64px)",
-  //   width: "100%",
-  //   padding: 20,
-  //   display: "flex",
-  // },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -76,5 +70,8 @@ export const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
+  },
+  root: {
+    display: "flex",
   },
 }));
