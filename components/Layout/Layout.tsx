@@ -145,9 +145,10 @@ export const CustomLayout: React.FC<CustomLayoutProps> = ({ children }) => {
           </Drawer>
           <div className={classes.container}>
             <div
-            // className={clsx(classes.content, {
-            //   [classes.contentShift]: drawerOpen,
-            // })}
+              // className={clsx(classes.content, {
+              //   [classes.contentShift]: drawerOpen,
+              // })}
+              className={classes.childContainer}
             >
               {children}
             </div>

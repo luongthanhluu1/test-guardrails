@@ -5,6 +5,8 @@ export const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
     flexDirection: "row",
+    paddingTop: 64,
+    flexGrow: 1,
   },
   drawer: {
     width: drawerWidth,
@@ -73,5 +75,8 @@ export const useStyles = makeStyles((theme) => ({
   },
   root: {
     display: "flex",
+  },
+  childContainer: {
+    flexGrow: 1,
   },
 }));
