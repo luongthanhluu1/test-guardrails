@@ -15,8 +15,12 @@ import { actions } from "stores/user";
 import { useStyles } from "./styles";
 interface HeaderProps {
   onClickMenuIcon: () => void;
+  className: string;
 }
-export const Header: React.FC<HeaderProps> = ({ onClickMenuIcon }) => {
+export const Header: React.FC<HeaderProps> = ({
+  onClickMenuIcon,
+  className,
+}) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const user = useSelector((state: RootState) => state.user);
@@ -28,7 +32,7 @@ export const Header: React.FC<HeaderProps> = ({ onClickMenuIcon }) => {
   };
 
   return (
-    <AppBar position="fixed">
+    <AppBar position="fixed" className={className}>
       <Toolbar>
         <IconButton
           edge="start"

@@ -9,7 +9,19 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@material-ui/core";
-import { ChevronLeft, ChevronRight, Inbox, Mail } from "@material-ui/icons";
+import {
+  AttachMoney,
+  AccountTree,
+  ChevronLeft,
+  ChevronRight,
+  Dashboard,
+  LocationOn,
+  ListAlt,
+  HomeWork,
+  Group,
+  Label,
+  ContactPhone,
+} from "@material-ui/icons";
 import { useTheme } from "@material-ui/core/styles";
 import Head from "next/head";
 import { useSelector } from "react-redux";
@@ -64,15 +76,24 @@ export const CustomLayout: React.FC<CustomLayoutProps> = ({ children }) => {
 
       <SignIn>
         <>
-          <Header onClickMenuIcon={onClickMenuIcon} />
+          <Header
+            onClickMenuIcon={onClickMenuIcon}
+            className={clsx(classes.appBar, {
+              [classes.appBarShift]: drawerOpen,
+            })}
+          />
           <div className={classes.container}>
             <Drawer
-              className={classes.drawer}
-              variant="persistent"
-              anchor="left"
-              open={drawerOpen}
+              variant="permanent"
+              className={clsx(classes.drawer, {
+                [classes.drawerOpen]: drawerOpen,
+                [classes.drawerClose]: !drawerOpen,
+              })}
               classes={{
-                paper: classes.drawerPaper,
+                paper: clsx({
+                  [classes.drawerOpen]: drawerOpen,
+                  [classes.drawerClose]: !drawerOpen,
+                }),
               }}
             >
               <div className={classes.drawerHeader}>
@@ -88,12 +109,18 @@ export const CustomLayout: React.FC<CustomLayoutProps> = ({ children }) => {
               {user?.role === Role.ADMIN && (
                 <>
                   <List>
-                    {["dashboard", "debt", "user"].map((text, index) => (
-                      <ListItem button key={text} onClick={() => goTo(text)}>
-                        <ListItemIcon>
-                          {index % 2 === 0 ? <Inbox /> : <Mail />}
-                        </ListItemIcon>
-                        <ListItemText primary={t(text)} />
+                    {[
+                      { name: "dashboard", icon: <Dashboard /> },
+                      { name: "debt", icon: <AttachMoney /> },
+                      { name: "user", icon: <Group /> },
+                    ].map((item, index) => (
+                      <ListItem
+                        button
+                        key={item.name}
+                        onClick={() => goTo(item.name)}
+                      >
+                        <ListItemIcon>{item.icon}</ListItemIcon>
+                        <ListItemText primary={t(item.name)} />
                       </ListItem>
                     ))}
                   </List>
@@ -102,19 +129,21 @@ export const CustomLayout: React.FC<CustomLayoutProps> = ({ children }) => {
               )}
               <List>
                 {[
-                  "item",
-                  "tag",
-                  "location",
-                  "contact",
-                  "order",
-                  "workflow",
-                  "warehouse",
-                ].map((text, index) => (
-                  <ListItem button key={text} onClick={() => goTo(text)}>
-                    <ListItemIcon>
-                      {index % 2 === 0 ? <Inbox /> : <Mail />}
-                    </ListItemIcon>
-                    <ListItemText primary={t(text)} />
+                  { name: "item", icon: <Dashboard /> },
+                  { name: "tag", icon: <Label /> },
+                  { name: "location", icon: <LocationOn /> },
+                  { name: "contact", icon: <ContactPhone /> },
+                  { name: "order", icon: <ListAlt /> },
+                  { name: "workflow", icon: <AccountTree /> },
+                  { name: "warehouse", icon: <HomeWork /> },
+                ].map((item, index) => (
+                  <ListItem
+                    button
+                    key={item.name}
+                    onClick={() => goTo(item.name)}
+                  >
+                    <ListItemIcon>{item.icon}</ListItemIcon>
+                    <ListItemText primary={t(item.name)} />
                   </ListItem>
                 ))}
               </List>
