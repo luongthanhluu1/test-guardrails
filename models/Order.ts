@@ -31,11 +31,16 @@ export interface OrderItem {
   _id?: string;
   id?: string;
   tags?: Tag[];
+  color?: Tag | null;
   quantily: number;
   price?: string | number;
   inputPrice?: string | number;
   totalPrice?: string | number;
   name?: string;
+  warehouseId?: string;
+  packageNo?: string;
+  wastePercent?: number;
+  required?: boolean;
 }
 
 export interface Order {
@@ -55,6 +60,7 @@ export interface Order {
   locationTo?: Location;
   inputDate?: string;
   isWarehouse?: boolean;
+  packageNo?: string;
   promoteCode?: string;
   promo?: number;
   price?: number;

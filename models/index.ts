@@ -13,3 +13,4 @@ export * from "./Order";
 export * from "./Voucher";
 export * from "./Review";
 export * from "./User";
+export * from "./Warehouse";

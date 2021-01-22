@@ -98,6 +98,12 @@ const DashBoard = () => {
     };
     if (orders && orders.length) {
       orders.forEach((order) => {
+        if (
+          order.status !== Status.Completed &&
+          order.status !== Status.Unpaid
+        ) {
+          return;
+        }
         if (order.type === Type.Input) {
           newSummary.totalInputOrder++;
           newSummary.totalInputPrice += order.totalPrice || 0;

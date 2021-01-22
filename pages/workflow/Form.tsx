@@ -23,7 +23,7 @@ import { useStyles } from "./styles";
 import { ColorBox } from "components/Color";
 import { Autocomplete } from "@material-ui/lab";
 import { getList } from "services";
-import { Product } from "models";
+import { Product, Location } from "models";
 import { Workflow, WorkflowItem } from "models/Workflow";
 import { toast } from "react-toastify";
 import { Loading } from "components/Loading";
@@ -48,17 +48,26 @@ const TagForm = ({ data, onSave }: ProductPormProps) => {
   const [fromItems, setFromItems] = useState<WorkflowItem[]>(
     data?.fromItems || []
   );
+  const [location, setLocation] = useState<Location | null>(
+    data?.location || null
+  );
   const [totalCosts, setTotalCosts] = useState(0);
   const [listProducts, setListProducts] = useState<Product[]>([]);
   const [searchItemText, setSearchItemText] = useState("");
+  const [listLocations, setListLocations] = useState<Location[]>([]);
   const { t } = useTranslation("common");
 
   const loadData = async () => {
     setLoading(true);
-    const res = await getList("item").catch((e) => {
-      toast.error(t("can't load data"));
-    });
-    setListProducts(res?.data);
+    const res = await Promise.all([getList("item"), getList("location")]).catch(
+      (e) => {
+        toast.error(t("can't load data"));
+      }
+    );
+    if (res) {
+      setListProducts(res[0]?.data);
+      setListLocations(res[1].data);
+    }
     setLoading(false);
   };
 
@@ -71,16 +80,17 @@ const TagForm = ({ data, onSave }: ProductPormProps) => {
       const updateData = {
         toItem,
         name,
+        location,
         fromItems,
         costs: parseInt(`${costs}`),
         totalCosts,
       };
-      if (!toItem.item.inputPrice) {
-        update("item", {
-          _id: toItem.item._id,
-          inputPrice: totalCosts,
-        });
-      }
+      // if (!toItem.item.inputPrice) {
+      //   update("item", {
+      //     _id: toItem.item._id,
+      //     inputPrice: totalCosts,
+      //   });
+      // }
       onSave(updateData);
     }
   };
@@ -110,7 +120,7 @@ const TagForm = ({ data, onSave }: ProductPormProps) => {
   };
 
   const onChangeQuantily = (index: number, value: number) => {
-    if (value < 1) value = 1;
+    if (value < 0) value = 0;
     const newFromItems = [...fromItems];
     newFromItems[index].quantily = value;
     setFromItems(newFromItems);
@@ -160,7 +170,7 @@ const TagForm = ({ data, onSave }: ProductPormProps) => {
             variant="outlined"
           />
         </Grid>
-        <Grid item xs={12} sm={12}>
+        {/* <Grid item xs={12} sm={12}>
           <TextField
             required={true}
             id="costs"
@@ -172,6 +182,26 @@ const TagForm = ({ data, onSave }: ProductPormProps) => {
             InputProps={{
               inputComponent: PriceInputFormat,
             }}
+          />
+        </Grid> */}
+        <Grid item xs={12} sm={12}>
+          <Autocomplete
+            id="location"
+            options={listLocations}
+            autoHighlight
+            fullWidth={true}
+            getOptionLabel={(option) => `${option.name}`}
+            value={location}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label={t("factory")}
+                variant="outlined"
+                fullWidth={true}
+                required={true}
+              />
+            )}
+            onChange={(e: any, value: Location | null) => setLocation(value)}
           />
         </Grid>
         <Grid item xs={12} sm={12}>
@@ -207,7 +237,7 @@ const TagForm = ({ data, onSave }: ProductPormProps) => {
                   <TableCell>{t("tag")}</TableCell>
                   <TableCell>{t("quantily")}</TableCell>
                   <TableCell></TableCell>
-                  <TableCell></TableCell>
+                  {/* <TableCell></TableCell> */}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -230,13 +260,13 @@ const TagForm = ({ data, onSave }: ProductPormProps) => {
                         }}
                         value={item.quantily}
                         onChange={(e) =>
-                          onChangeQuantily(index, parseInt(e.target.value, 10))
+                          onChangeQuantily(index, parseFloat(e.target.value))
                         }
                       />
                     </TableCell>
-                    <TableCell>
+                    {/* <TableCell>
                       <DisplayPrice value={item.totalPrice || 0} />
-                    </TableCell>
+                    </TableCell> */}
                     <TableCell>
                       <IconButton
                         aria-label="remove"
@@ -248,7 +278,7 @@ const TagForm = ({ data, onSave }: ProductPormProps) => {
                     </TableCell>
                   </TableRow>
                 ))}
-                <TableRow key={"total"}>
+                {/* <TableRow key={"total"}>
                   <TableCell></TableCell>
                   <TableCell></TableCell>
                   <TableCell>
@@ -264,7 +294,7 @@ const TagForm = ({ data, onSave }: ProductPormProps) => {
                     </p>
                   </TableCell>
                   <TableCell></TableCell>
-                </TableRow>
+                </TableRow> */}
               </TableBody>
             </Table>
           </TableContainer>
@@ -284,7 +314,7 @@ const TagForm = ({ data, onSave }: ProductPormProps) => {
             renderInput={(params) => (
               <TextField
                 {...params}
-                label={t("add product")}
+                label={t("add material")}
                 variant="outlined"
                 fullWidth={true}
                 onChange={(

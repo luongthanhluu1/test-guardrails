@@ -23,6 +23,7 @@ const ProductForm = ({ data, onSave }: ProductPormProps) => {
   const [autocompleteTagValue, setAutocompleteTagValue] = useState("");
   const [tagsList, setTagsList] = useState<Tag[]>([]);
   const [colorList, setColorList] = useState<Tag[]>([]);
+  const [productCode, setProductCode] = useState(data?.name || "");
   const [name, setName] = useState(data?.name || "");
   const [price, setPrice] = useState(data?.price || "");
   const [inputPrice, setInputPrice] = useState(data?.inputPrice || "");
@@ -79,7 +80,7 @@ const ProductForm = ({ data, onSave }: ProductPormProps) => {
     setLoading(true);
     const updateData = {
       name,
-      price,
+      price: price || 0,
       inputPrice,
       tags: [...tags, ...colors],
     };
@@ -88,7 +89,28 @@ const ProductForm = ({ data, onSave }: ProductPormProps) => {
 
   return (
     <form onSubmit={onSubmit}>
-      <Grid container spacing={2}>
+      <Grid container spacing={4}>
+        <Grid item xs={12} sm={12}>
+          <TextField
+            id="productCode"
+            label={t("productCode")}
+            value={productCode}
+            onChange={(e) => setProductCode(e.target.value)}
+            fullWidth={true}
+            variant="outlined"
+          />
+        </Grid>
+        <Grid item xs={12} sm={12}>
+          <TextField
+            required={true}
+            id="name"
+            label={t("productName")}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            fullWidth={true}
+            variant="outlined"
+          />
+        </Grid>
         {/* <Grid item xs={12} md={6}>
           <div className={classes.listTags}>
             {colors.map((tag, i) => (
@@ -102,7 +124,6 @@ const ProductForm = ({ data, onSave }: ProductPormProps) => {
           </div>
           <Autocomplete
             id="selectColor"
-            style={{ width: 300 }}
             options={colorList}
             inputValue={autocompleteColorValue}
             autoHighlight
@@ -125,19 +146,6 @@ const ProductForm = ({ data, onSave }: ProductPormProps) => {
             onChange={(e, value) => onSelectColor(value)}
           />
         </Grid> */}
-      </Grid>
-      <Grid container spacing={4}>
-        <Grid item xs={12} sm={12}>
-          <TextField
-            required={true}
-            id="name"
-            label={t("productName")}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            fullWidth={true}
-            variant="outlined"
-          />
-        </Grid>
         <Grid item xs={12} md={12}>
           <div className={classes.listTags}>
             {tags.map((tag, i) => (
@@ -148,7 +156,6 @@ const ProductForm = ({ data, onSave }: ProductPormProps) => {
           </div>
           <Autocomplete
             id="selectType"
-            // style={{ width: 300 }}
             options={tagsList}
             inputValue={autocompleteTagValue}
             autoHighlight
@@ -173,7 +180,6 @@ const ProductForm = ({ data, onSave }: ProductPormProps) => {
         </Grid>
         <Grid item xs={12} sm={12}>
           <TextField
-            required={true}
             id="price"
             label={t("sell price")}
             value={price}
@@ -187,7 +193,6 @@ const ProductForm = ({ data, onSave }: ProductPormProps) => {
         </Grid>
         <Grid item xs={12} sm={12}>
           <TextField
-            // required={true}
             id="inputPrice"
             label={t("input price")}
             value={inputPrice}

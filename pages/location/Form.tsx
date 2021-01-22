@@ -137,9 +137,9 @@ const Form = ({ data, onSave }: ProductPormProps) => {
           />
         </Grid>
       </Grid>
-      {location.isFactory && (
+      {/* {location.isFactory && (
         <>
-          {/* <Grid container spacing={2}>
+          <Grid container spacing={2}>
             <Grid item xs={12} sm={12}>
               <TextField
                 required={true}
@@ -150,7 +150,7 @@ const Form = ({ data, onSave }: ProductPormProps) => {
                 fullWidth={true}
               />
             </Grid>
-          </Grid> */}
+          </Grid>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12}>
               <TextField
@@ -164,7 +164,7 @@ const Form = ({ data, onSave }: ProductPormProps) => {
             </Grid>
           </Grid>
         </>
-      )}
+      )} */}
 
       <Grid container spacing={2} className={classes.group}>
         <Grid item xs={12} sm={12}>

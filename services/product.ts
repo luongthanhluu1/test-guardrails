@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Product } from "models";
 
-const apiUrl = "http://134.209.97.209:3001/v1/items";
+const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}v1/items`;
 interface ParamsList {
   page?: number;
   limit?: number;

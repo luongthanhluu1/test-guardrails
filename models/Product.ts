@@ -28,6 +28,7 @@ export interface Product {
   unit?: string;
   info?: ProductInfo;
   tags?: Tag[];
+  color?: Tag;
 }
 
 export interface ProfitProduct {}

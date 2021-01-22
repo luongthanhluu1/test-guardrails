@@ -1,4 +1,5 @@
 import { Product } from "./Product";
+import { Location } from "./Location";
 
 export interface WorkflowItem {
   item: Product;
@@ -8,6 +9,7 @@ export interface WorkflowItem {
 
 export interface Workflow {
   costs: number;
+  location: Location | null;
   name: string;
   fromItems: WorkflowItem[];
   toItem: WorkflowItem;

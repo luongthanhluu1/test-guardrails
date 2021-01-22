@@ -82,6 +82,15 @@ const Warehouse = () => {
   const limit = 10;
   const tableHeaders = [
     {
+      field: "location",
+      headerName: t("location"),
+      flex: 1,
+      width: 300,
+      valueGetter: (params: CellParams) => {
+        return `${params.row.location?.name}`;
+      },
+    },
+    {
       field: "item",
       headerName: t("name"),
       flex: 1,
@@ -96,10 +105,16 @@ const Warehouse = () => {
       flex: 1,
       width: 300,
       renderCell: (params: CellParams) => {
-        const tags: Tag[] = params.row.item?.tags || [];
+        const tags: Tag[] = [
+          ...(params.row.item?.tags || []),
+          params.row.item?.color,
+        ];
         return (
           <p>
             {tags?.map((tag, i) => {
+              if (!tag) {
+                return;
+              }
               const style = {
                 borderBottom: "",
               };
@@ -118,6 +133,12 @@ const Warehouse = () => {
       },
     },
     {
+      field: "packageNo",
+      headerName: t("packageNo"),
+      flex: 1,
+      width: 300,
+    },
+    {
       field: "count",
       headerName: t("count"),
       flex: 1,
@@ -127,24 +148,24 @@ const Warehouse = () => {
   const getData = () => {
     getList(name, { location: location?._id, sort })
       .then((res) => {
-        const newData: any[] = [];
+        // const newData: any[] = [];
         res.data?.forEach((item: any) => {
           item.id = item._id;
-          let index = -1;
-          for (let i = 0; i < newData.length; i++) {
-            const e = newData[i];
-            if (e.item?._id === item.item?._id) {
-              index = i;
-            }
-          }
-          if (index > -1) {
-            newData[index].count += item.count || 0;
-          } else {
-            newData.push(item);
-          }
+          // let index = -1;
+          // for (let i = 0; i < newData.length; i++) {
+          //   const e = newData[i];
+          //   if (e.item?._id === item.item?._id) {
+          //     index = i;
+          //   }
+          // }
+          // if (index > -1) {
+          //   newData[index].count += item.count || 0;
+          // } else {
+          //   newData.push(item);
+          // }
         });
-        setTotal(newData.length);
-        setData(newData);
+        setTotal(res?.data?.length || 0);
+        setData(res?.data || []);
       })
       .catch((e) => {
         toast.error(t("can't load data"));

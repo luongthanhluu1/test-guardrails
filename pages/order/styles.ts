@@ -35,6 +35,11 @@ export const useStyles = makeStyles(() => ({
   error: {
     color: "red",
   },
+  listTags: {
+    display: "flex",
+    flexDirection: "row",
+    padding: "5px 0px",
+  },
 }));
 
 export default () => {

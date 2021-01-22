@@ -23,7 +23,7 @@ interface ProductPormProps {
 const TagForm = ({ data, onSave }: ProductPormProps) => {
   const classes = useStyles();
   const [type, setType] = useState(data?.type || TagType.TAG);
-  const [color, setColor] = useState(data?.value || "");
+  const [color, setColor] = useState(data?.value || "#000000");
   const [name, setName] = useState(data?.name || "");
   const { t } = useTranslation("common");
   const onChangeType = (e: any) => {
@@ -48,7 +48,7 @@ const TagForm = ({ data, onSave }: ProductPormProps) => {
   return (
     <form onSubmit={onSubmit}>
       <Grid container spacing={4}>
-        {/* <Grid item xs={12} sm={12}>
+        <Grid item xs={12} sm={12}>
           <FormControl variant="outlined" fullWidth={true}>
             <InputLabel id="type-label" required={true}>
               {t("type")}/{t("color")}
@@ -67,7 +67,7 @@ const TagForm = ({ data, onSave }: ProductPormProps) => {
               ))}
             </Select>
           </FormControl>
-        </Grid> */}
+        </Grid>
         <Grid item xs={12} sm={12}>
           <TextField
             required={true}
