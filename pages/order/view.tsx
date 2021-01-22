@@ -37,6 +37,12 @@ const New = () => {
   const { t } = useTranslation("common");
   const title = `${t("view")} ${t(name)}`;
   const date = useFormatDate(data?.date || "");
+  const items =
+    data?.type === Type.Produce
+      ? data?.items
+      : data?.requireItems?.length
+      ? data?.requireItems
+      : data?.items;
   useEffect(() => {
     if (id) {
       setLoading(true);
@@ -48,6 +54,7 @@ const New = () => {
       });
     }
   }, [id]);
+
   return (
     <Container>
       <div className={classes.title}>
@@ -93,7 +100,7 @@ const New = () => {
           </Grid>
           <Grid container spacing={2}></Grid>
           <Grid container spacing={2}>
-            {data?.items && data?.items?.length ? (
+            {items && items?.length ? (
               <TableContainer>
                 <Table>
                   <TableHead>
@@ -101,11 +108,12 @@ const New = () => {
                       <TableCell>{t("name")}</TableCell>
                       <TableCell>{t("tag")}</TableCell>
                       <TableCell>{t("quantily")}</TableCell>
+                      <TableCell>{t("unitPrice")}</TableCell>
                       <TableCell></TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {data.items.map((item, index) => (
+                    {items.map((item, index) => (
                       <TableRow key={item._id}>
                         <TableCell component="th" scope="row">
                           {item.name}
@@ -115,15 +123,20 @@ const New = () => {
                         </TableCell>
                         <TableCell>{item.quantily}</TableCell>
                         <TableCell>
-                          <DisplayPrice
-                            value={
-                              item.quantily * parseInt(`${item.price}`, 10)
-                            }
-                          />
+                          {data?.type === Type.Produce ||
+                          data?.type === Type.Input ? (
+                            <DisplayPrice value={`${item.inputPrice}`} />
+                          ) : (
+                            <DisplayPrice value={`${item.price}`} />
+                          )}
+                        </TableCell>
+                        <TableCell>
+                          <DisplayPrice value={`${item.totalPrice}`} />
                         </TableCell>
                       </TableRow>
                     ))}
                     <TableRow key={"total"}>
+                      <TableCell></TableCell>
                       <TableCell></TableCell>
                       <TableCell></TableCell>
                       <TableCell>

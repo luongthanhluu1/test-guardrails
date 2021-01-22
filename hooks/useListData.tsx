@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Columns, PageChangeParams } from "@material-ui/data-grid";
+import { Columns, PageChangeParams, SortItem } from "@material-ui/data-grid";
 import { toast } from "react-toastify";
 import useTranslation from "next-translate/useTranslation";
 
 import { useTable } from "hooks/useTable";
 import { useHeader } from "hooks/useHeader";
 import { Product, Tag } from "models";
-import { getList } from "services";
+import { Filter, getList } from "services";
 
 import { useStyles } from "./styles";
 
@@ -16,6 +16,9 @@ interface UseListDataProps {
   viewable?: boolean;
   unableDelete?: boolean;
   disableColumnSelector?: boolean;
+  showToolbar?: boolean;
+  title?: string;
+  filter?: Filter;
 }
 
 export const useListData = ({
@@ -24,16 +27,24 @@ export const useListData = ({
   viewable = false,
   unableDelete = false,
   disableColumnSelector,
+  showToolbar = false,
+  title,
+  filter,
 }: UseListDataProps) => {
   const classes = useStyles();
   const { t } = useTranslation("common");
   const [data, setData] = useState([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
+  const [sort, setSort] = useState<SortItem>();
   const limit = 10;
 
+  const onSortChange = (sortItem: SortItem) => {
+    setSort(sortItem);
+  };
+
   const getData = () => {
-    getList(name, { page, limit })
+    getList(name, { page, limit, sort, filter })
       .then((res) => {
         setTotal(res.total);
         setData(
@@ -57,20 +68,23 @@ export const useListData = ({
   };
   useEffect(() => {
     getData();
-  }, [page, limit]);
+  }, [page, limit, sort]);
   const { TableComponent, selected } = useTable({
     data,
     headers: tableHeaders,
     total,
+    onSortChange,
     onPageChange,
     pageSize: limit,
     disableColumnSelector,
+    showToolbar,
   });
   const { Header } = useHeader(name, {
     selected,
     onAfterDeleted,
     viewable,
     unableDelete,
+    title,
   });
   const Render = (
     <div className={classes.container}>

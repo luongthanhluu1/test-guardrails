@@ -1,18 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useTranslation from "next-translate/useTranslation";
 import { CellParams } from "@material-ui/data-grid";
+import { useRouter } from "next/router";
 
 import { ColorBox } from "components/Color";
-import { Status, TagType } from "models";
+import { Contact, Status, TagType } from "models";
 import { useListData } from "hooks/useListData";
 import { useFormatDate } from "hooks/useFormatDate";
 import { DisplayPrice } from "components/DisplayPrice";
 import { StatusText } from "components/Status";
+import { getById } from "services";
 
 export const name = "order";
 
 const TagList = () => {
+  const [data, setData] = useState<Contact>();
   const { t } = useTranslation("common");
+  const router = useRouter();
+  const { query } = router;
+  const { id } = query;
+
+  useEffect(() => {
+    if (id) {
+      getById("contact", `${id}`).then((res: any) => {
+        if (res.data) {
+          setData(res.data);
+        }
+      });
+    }
+  }, [id]);
+
   const headers = [
     {
       field: "date",
@@ -79,6 +96,11 @@ const TagList = () => {
     viewable,
     unableDelete,
     showToolbar: false,
+    title: t("list order {{name}}", { name: data?.name || "" }),
+    filter: {
+      name: "customer",
+      value: `${id || ""}`,
+    },
   });
   return Render;
 };

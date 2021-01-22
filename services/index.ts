@@ -4,6 +4,10 @@ import { Product, Status, Tag } from "models";
 
 const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}v1/`;
 
+export interface Filter {
+  name: string;
+  value: string;
+}
 interface ParamsList {
   page?: number;
   limit?: number;
@@ -14,6 +18,7 @@ interface ParamsList {
   sortBy?: string;
   sortDirection?: string | null;
   status?: Status;
+  filter?: Filter;
 }
 
 export const create = (name: string, data: Product | Tag) => {
@@ -26,9 +31,18 @@ export const update = (name: string, data: Product | Tag) => {
 
 export const getList = async (
   name: string,
-  { page, limit, location, sort, status, fromDate, toDate }: ParamsList = {}
+  {
+    page,
+    limit,
+    location,
+    sort,
+    status,
+    fromDate,
+    toDate,
+    filter,
+  }: ParamsList = {}
 ) => {
-  const params: ParamsList = {
+  const params: any = {
     page: page,
     limit: limit,
   };
@@ -41,6 +55,9 @@ export const getList = async (
   }
   if (status) {
     params.status = status;
+  }
+  if (filter && filter.name) {
+    params[filter.name] = filter.value;
   }
   if (fromDate) params.fromDate = fromDate;
   if (toDate) params.toDate = toDate;

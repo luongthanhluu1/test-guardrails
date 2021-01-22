@@ -23,12 +23,14 @@ interface Options {
   viewable?: boolean;
   unableDelete?: boolean;
   unableaAdd?: boolean;
+  title?: string;
 }
 
 export const useHeader = (name: string, options?: Options) => {
   const classes = useStyles();
   const { t } = useTranslation("common");
-  const title = t(name);
+  console.log(options);
+  const pageTitle = options?.title || t(name);
 
   const onClickDelete = () => {
     const options = {
@@ -60,7 +62,7 @@ export const useHeader = (name: string, options?: Options) => {
 
   const Header = (
     <div className={classes.container}>
-      <h2>{title}</h2>
+      <h2>{pageTitle}</h2>
       <div>
         {!options?.unableaAdd && (
           <IconButton aria-label="edit" href={`/${name}/new`}>

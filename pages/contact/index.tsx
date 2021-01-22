@@ -50,7 +50,11 @@ const List = () => {
     //   },
     // },
   ];
-  const { Render } = useListData({ name, tableHeaders: headers });
+  const { Render } = useListData({
+    name,
+    tableHeaders: headers,
+    viewable: true,
+  });
   return Render;
 };
 export default List;
