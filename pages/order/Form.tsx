@@ -258,15 +258,16 @@ const Form = ({ data, onSave, submiting }: ProductPormProps) => {
     items.forEach((item) => {
       let itemTotal = 0;
       let itemInputTotal = 0;
+      const quantily = item.quantily || 0;
       if (type === Type.Input || type === Type.Produce) {
         itemTotal =
-          item.quantily * parseInt(`${item.inputPrice || item.price}`);
+          quantily * parseInt(`${item.inputPrice || item.price || 0}`);
       }
       if (type === Type.Output) {
-        itemTotal = item.quantily * parseInt(`${item.price}`, 10);
+        itemTotal = quantily * parseInt(`${item.price || 0}`, 10);
         // to calculate profit
         itemInputTotal =
-          item.quantily * parseInt(`${item.inputPrice || item.price}`, 10);
+          quantily * parseInt(`${item.inputPrice || item.price || 0}`, 10);
       }
       // if (type === Type.Produce) {
       //   itemTotal = item.quantily * (workflows[item?._id || ""]?.costs || 0);
@@ -291,11 +292,16 @@ const Form = ({ data, onSave, submiting }: ProductPormProps) => {
     setProfit(tmpProfit);
   };
 
+  const clearData = () => {
+    setOrderItems([]);
+    setRequireItems([]);
+    setWorkflows({});
+  };
+
   const onChangeType = (e: any) => {
     const newType = e.target.value;
     setType(newType);
-    setOrderItems([]);
-    setRequireItems([]);
+    clearData();
   };
 
   const calCulateCosts = () => {
@@ -310,14 +316,27 @@ const Form = ({ data, onSave, submiting }: ProductPormProps) => {
     setCosts(`${totalCosts}`);
   };
 
-  // const onChangeLocationFrom = (value: Location | null) => {
-  //   setLocationFrom(value);
-  //   if (!locationTo) {
-  //     if (type === Type.Produce) {
-  //       setLocationTo(value);
-  //     }
-  //   }
-  // };
+  const calculateWasteTotal = () => {
+    if (type !== Type.Produce) {
+      return;
+    }
+    let totalWaste = 0;
+    requireItems.forEach((item) => {
+      const wastePercent = item.wastePercent || 0;
+      const quantily = item.quantily || 0;
+      const inpuPrice = item.inputPrice || 0;
+      totalWaste +=
+        ((quantily * wastePercent) / 100) * parseFloat(`${inpuPrice}`);
+    });
+    setWaste(totalWaste);
+  };
+
+  const onChangeLocationFrom = (value: Location | null) => {
+    setLocationFrom(value);
+    if (type === Type.Produce) {
+      clearData();
+    }
+  };
 
   useEffect(() => {
     loadConfigData();
@@ -330,6 +349,10 @@ const Form = ({ data, onSave, submiting }: ProductPormProps) => {
   useEffect(() => {
     calculateTotal();
   }, [orderItems, requireItems, promo, costs, type, workflows]);
+
+  useEffect(() => {
+    calculateWasteTotal();
+  }, [requireItems]);
 
   useEffect(() => {
     let newErrorMessage = "";
@@ -452,7 +475,7 @@ const Form = ({ data, onSave, submiting }: ProductPormProps) => {
                 />
               )}
               onChange={(e: any, value: Location | null) =>
-                setLocationFrom(value)
+                onChangeLocationFrom(value)
               }
             />
           </Grid>

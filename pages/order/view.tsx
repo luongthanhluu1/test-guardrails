@@ -43,6 +43,9 @@ const New = () => {
       : data?.requireItems?.length
       ? data?.requireItems
       : data?.items;
+  const requireItems = data?.requireItems || [];
+  const type = data?.type;
+
   useEffect(() => {
     if (id) {
       setLoading(true);
@@ -119,7 +122,9 @@ const New = () => {
                           {item.name}
                         </TableCell>
                         <TableCell>
-                          {item.tags?.map((tag) => tag.name).join(", ")}
+                          {[...(item.tags || []), item.color]
+                            ?.map((tag) => tag?.name)
+                            .join(", ")}
                         </TableCell>
                         <TableCell>{item.quantily}</TableCell>
                         <TableCell>
@@ -135,6 +140,49 @@ const New = () => {
                         </TableCell>
                       </TableRow>
                     ))}
+                    {type === Type.Produce && requireItems.length > 0 && (
+                      <>
+                        {type === Type.Produce && requireItems.length > 0 && (
+                          <TableRow>
+                            <TableCell className={classes.requireText}>
+                              {t("material require")}
+                            </TableCell>
+                          </TableRow>
+                        )}
+                        <TableRow key={"total"}>
+                          <TableCell>{t("name")}</TableCell>
+                          <TableCell>{t("tag")}</TableCell>
+                          <TableCell>{t("quantily")}</TableCell>
+                          <TableCell>{t("packageNo")}</TableCell>
+                          <TableCell>
+                            {type === Type.Produce
+                              ? t("wastePercent")
+                              : t("unitPrice")}
+                          </TableCell>
+                        </TableRow>
+                        {requireItems &&
+                          requireItems.map((item, index) => (
+                            <TableRow
+                              key={item.warehouseId || item._id}
+                              className={
+                                type === Type.Produce ? classes.requireItem : ""
+                              }
+                            >
+                              <TableCell component="th" scope="row">
+                                {item.name}
+                              </TableCell>
+                              <TableCell>
+                                {[...(item.tags || []), item.color]
+                                  ?.map((tag) => tag?.name)
+                                  .join(", ")}
+                              </TableCell>
+                              <TableCell>{item.quantily}</TableCell>
+                              <TableCell>{item.packageNo}</TableCell>
+                              <TableCell>{item.wastePercent || 0}%</TableCell>
+                            </TableRow>
+                          ))}
+                      </>
+                    )}
                     <TableRow key={"total"}>
                       <TableCell></TableCell>
                       <TableCell></TableCell>

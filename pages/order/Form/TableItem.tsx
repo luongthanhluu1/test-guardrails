@@ -107,6 +107,13 @@ export const TableItem: FC<TableItemProps> = ({
     const isRequireItem = type === REQUIRE_ITEM;
     const newItems = isRequireItem ? [...requireItems] : [...orderItems];
     newItems[index].quantily = value;
+    const newRequireItems = calWastsPercent(
+      isRequireItem ? orderItems : newItems,
+      isRequireItem ? newItems : requireItems
+    );
+    if (newRequireItems) {
+      onRequireItemsChange(newRequireItems);
+    }
     isRequireItem ? onRequireItemsChange(newItems) : onItemsChange(newItems);
   };
 
@@ -157,6 +164,46 @@ export const TableItem: FC<TableItemProps> = ({
       console.log(newItems[itemIndex], warehouse);
       onRequireItemsChange(newItems);
     }
+  };
+
+  const calWastsPercent = (
+    localOrderItems = orderItems,
+    localRequireItems = requireItems
+  ) => {
+    if (type !== Type.Produce) {
+      return;
+    }
+    const orderItem = localOrderItems[0];
+    if (!orderItem || requireItems?.length === 0) {
+      return;
+    }
+    const id = orderItem?._id;
+    const workflow = workflows[id || ""];
+    // console.log(localOrderItems, localRequireItems);
+    if (!id || !workflow) {
+      return;
+    }
+    const newRequireItems = [...localRequireItems];
+    workflow.fromItems.forEach((item) => {
+      const numberQuantilyRequire = item.quantily * orderItem.quantily;
+      let numberReal = 0;
+      let wastePercent = 0;
+      const listMatchRequireItemIndex: number[] = [];
+      newRequireItems.forEach((requireItem, index) => {
+        if (requireItem._id === item.item._id) {
+          numberReal += requireItem.quantily;
+          listMatchRequireItemIndex.push(index);
+        }
+      });
+      wastePercent = 100 - (numberQuantilyRequire / numberReal) * 100;
+      if (wastePercent < 0) wastePercent = 0;
+      listMatchRequireItemIndex.forEach((index) => {
+        newRequireItems[index].wastePercent = wastePercent;
+      });
+    });
+    // console.log(newRequireItems);
+    return newRequireItems;
+    // onRequireItemsChange(newRequireItems);
   };
 
   useEffect(() => {
@@ -467,7 +514,7 @@ export const TableItem: FC<TableItemProps> = ({
                 </p>
               )}
               <p className={classes.totalText}>
-                <DisplayPrice value={total || ""} />
+                <DisplayPrice value={total || 0} />
               </p>
             </TableCell>
             <TableCell></TableCell>
