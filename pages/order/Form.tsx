@@ -6,6 +6,8 @@ import {
   Select,
   MenuItem,
   Button,
+  FormControlLabel,
+  Switch,
 } from "@material-ui/core";
 import { Close, SendTwoTone } from "@material-ui/icons";
 import React, { ChangeEvent, SyntheticEvent, useEffect, useState } from "react";
@@ -102,6 +104,7 @@ const Form = ({ data, onSave, submiting }: ProductPormProps) => {
   >([]);
   const [workflows, setWorkflows] = useState<CacheWorkflows>({});
   const [errorMessage, setErrorMessage] = useState("");
+  const [autoGenPackageNo, setAutoGenPackageNo] = useState(true);
 
   const { t } = useTranslation("common");
 
@@ -120,7 +123,9 @@ const Form = ({ data, onSave, submiting }: ProductPormProps) => {
       costs: parseInt(`${costs}`, 10),
       packageNo: packageNo
         ? packageNo
-        : moment(date).format("DDMMYYYY-HH:MM:SS"),
+        : autoGenPackageNo
+        ? moment(date).format("DDMMYYYY-HH:MM:SS")
+        : "",
       profit,
       promo: parseInt(`${promo}`, 10),
       totalPrice: total,
@@ -158,6 +163,13 @@ const Form = ({ data, onSave, submiting }: ProductPormProps) => {
       }
     }
     setLoading(false);
+  };
+
+  const onChangeAutoGenPackageNo = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setAutoGenPackageNo(checked);
   };
 
   const onSelectProduct = (product: Product | null) => {
@@ -544,6 +556,21 @@ const Form = ({ data, onSave, submiting }: ProductPormProps) => {
                 fullWidth={true}
                 variant="outlined"
               />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              {!packageNo && (
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={autoGenPackageNo}
+                      onChange={onChangeAutoGenPackageNo}
+                      name="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label={t("auto generate packageNo")}
+                />
+              )}
             </Grid>
             <Grid item xs={12} sm={12}>
               <KeyboardDatePicker

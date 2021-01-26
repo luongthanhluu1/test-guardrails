@@ -5,6 +5,7 @@
     "add product": "Thêm sản phẩm",
     "apply": "Áp dụng",
     "are you sure delete?": "Bạn có chắc muốn xoá?",
+    "auto generate packageNo": "Tự động tạo mã lô hàng",
     "can't load data": "Không thể tải dữ liệu!",
     "can't load {{name}} data": "Không thể tải {{name}}",
     "create": "Tạo mới",
