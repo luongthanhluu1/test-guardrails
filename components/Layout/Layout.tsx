@@ -47,7 +47,7 @@ export const CustomLayout: React.FC<CustomLayoutProps> = ({ children }) => {
   const classes = useStyles(theme);
 
   const [authTokens, setAuthTokens] = useState("");
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(true);
 
   const setTokens = (data: any) => {
     localStorage.setItem("tokens", JSON.stringify(data));
