@@ -33,7 +33,6 @@ import { SignIn } from "components/SignIn";
 import { Header } from "components/Header";
 import { AuthContext } from "context/auth";
 import { Role } from "models/User";
-import * as rdd from "react-device-detect";
 
 import { useStyles } from "./styles";
 
@@ -48,7 +47,7 @@ export const CustomLayout: React.FC<CustomLayoutProps> = ({ children }) => {
   const classes = useStyles(theme);
 
   const [authTokens, setAuthTokens] = useState("");
-  const [drawerOpen, setDrawerOpen] = useState(rdd.isMobile ? false : true);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const setTokens = (data: any) => {
     localStorage.setItem("tokens", JSON.stringify(data));
